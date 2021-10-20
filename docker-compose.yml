@@ -1,0 +1,38 @@
+version: '2'
+services:
+
+  mysql:
+    image: mysql
+    restart: always
+    environment: 
+      MYSQL_USER: cda
+      MYSQL_PASSWORD: cda
+      MYSQL_DATABASE: cda
+    ports:
+        - 127.0.0.1:27017:27017
+    volumes:
+      - ./data:/data/db
+
+  back:
+    build: ./back_status
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      PORT: 8080
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_USER: cda
+      MYSQL_PASSWORD: cda
+      MYSQL_DATABASE: cda
+      DB_HOST: mysql
+      DB_PORT: 27017
+
+  front:
+    build: ./front_status
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - back
