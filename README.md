@@ -1,13 +1,6 @@
 <div id="top"></div>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-<!-- PROJECT LOGO -->
+<!-- PROJECT status  -->
 <br />
 <div align="center">
 
@@ -94,7 +87,7 @@ Here are the commands to perform :
    ```
    If you want to check that it is working properly, you can run this command:
    ```sh
-   docker ps -
+   docker ps -a
    ```
    Normally you will see something like that : 
    ```sh
