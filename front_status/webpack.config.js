@@ -1,29 +1,22 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  // entry: ["@babel/polyfill", "./src/index.js"],
   entry: "./src/App.js",
   mode: "development",
+  watch: true,
   output: {
     path: path.resolve("dist"),
     filename: "bundle.js",
   },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
+  target: "web",
+
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-      {
         test: /\.scss$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.js$/,
@@ -31,10 +24,36 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
     ],
   },
+
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  devServer: {
+    liveReload: true,
+    static: {
+      directory: path.join(__dirname, "/"),
+      watch: true,
+    },
+    watchFiles: {
+      paths: ["src/*.ts"],
+    },
+    compress: true,
+    port: 3000,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
+  ],
 };
