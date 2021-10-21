@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { render } from "react-dom";
 
 function App() {
   const [data, setData] = useState(null);
@@ -14,11 +13,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>{!data ? "Loading..." : data}</p>
       </header>
     </div>
   );
 }
 
-export default App;
+render(
+  <App />,
+  document.getElementById("wrapper"),
+);
