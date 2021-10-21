@@ -1,15 +1,14 @@
 version: '2'
 services:
 
-  mysql:
+  mysqldb:
     image: mysql
     restart: always
     environment: 
-      MYSQL_USER: cda
-      MYSQL_PASSWORD: cda
+      MYSQL_ROOT_PASSWORD: cda
       MYSQL_DATABASE: cda
     ports:
-        - 127.0.0.1:27017:27017
+        - 127.0.0.1:3306:3306
     volumes:
       - ./data:/data/db
 
@@ -18,16 +17,14 @@ services:
     restart: always
     ports:
       - 8080:8080
-    environment:
-      PORT: 8080
     depends_on:
-      - mysql
+      - mysqldb
     environment:
-      MYSQL_USER: cda
-      MYSQL_PASSWORD: cda
-      MYSQL_DATABASE: cda
-      DB_HOST: mysql
-      DB_PORT: 27017
+      DB_USER: root
+      DB_PASSWORD: cda
+      DB_NAME: cda
+      DB_HOST: mysqldb
+      DB_PORT: 3306
 
   front:
     build: ./front_status
