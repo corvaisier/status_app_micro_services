@@ -29,6 +29,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#deployement">Deployement</a></li>
   </ol>
 </details>
 
@@ -67,6 +68,8 @@ The set can be deployed thanks to `docker`.
 As part of the development, you have to deploy the database, then launch the back and front project.
 Here are the commands to perform :
 
+<!-- Installation -->
+
 ### Installation
 
 1. Go tu the [repo](https://github.com/corvaisier/status_ap)
@@ -85,6 +88,10 @@ Here are the commands to perform :
    ```sh
     docker-compose run mysqldb
    ```
+   You may have to kill process to port 3306 if a MySQL server run in this port. This command sould work : 
+   ```sh
+   sudo kill -9 $(sudo lsof -t -i:3306)
+   ```   
    If you want to check that it is working properly, you can run this command:
    ```sh
    docker ps -a
@@ -123,3 +130,8 @@ These micro-services can work, have abnormal latency or even stop working.
 It will store the result of these queries in the database and pass the information to front_status so that it can present the information.
 In the event that some of the micro-services are stopped, its role is to inform the technical managers as well as the users.
 
+<!-- Deployement -->
+
+## Deployement
+
+Futur topic with docker-compose build and docker compose run
