@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx"
-
   },
   "keywords": [],
   "author": "",
@@ -14,8 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

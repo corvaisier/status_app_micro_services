@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: cda
       MYSQL_DATABASE: cda
     ports:
-        - 127.0.0.1:3306:3306
+        - 3307:3306
     volumes:
       - ./data:/data/db
 
@@ -25,6 +25,8 @@ services:
       DB_NAME: cda
       DB_HOST: mysqldb
       DB_PORT: 3306
+    stdin_open: true
+    tty: true
 
   front:
     build: ./front_status
